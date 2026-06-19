@@ -1,0 +1,743 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>適当に振り返り</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="38495d55-1339-8075-bf16-f818e013a8c3" class="page sans"><header><h1 class="page-title" dir="auto">適当に振り返り</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="38495d55-1339-809f-8167-c1a5e4d49105" class="">備忘録、情報系院卒予定の人の参考にはギリなる？かも。</p></div><div style="display:contents" dir="auto"><p id="38495d55-1339-8015-978f-fdda95dd3cd5" class="">エージェント経由でいろいろやってた。</p></div><div style="display:contents" dir="auto"><p id="38495d55-1339-80f0-b2bd-d8cc4fcc72db" class="">専攻はセキュリティです。本名で調べたら論文のタイトルくらいは出てくると思う。</p></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="38495d55-1339-8068-9f77-cad0148f50ed"><div style="font-size:1.5em"><img class="icon" src="%E9%81%A9%E5%BD%93%E3%81%AB%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/1359114273560723616.webp"/></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="38495d55-1339-80a4-89a1-daa86f511bb1" class="">戦績はたぶんこんなもんだったと思う</p></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-808a-b967-d932f6b62e46" class="bulleted-list"><li style="list-style-type:disc">説明会は8社くらい聞いてみたかな？<div style="display:contents" dir="auto"><ul id="38495d55-1339-80ff-a07d-ed0ad38789b5" class="bulleted-list"><li style="list-style-type:circle">けどその中で面接までちゃんと受けたのは4社とか？</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-8099-9adb-c1dde6d03e6f" class="bulleted-list"><li style="list-style-type:circle">1社書類落ち<br/>2社音信不通(時期的に他の最終とか始まってたからエージェント側が日程調整してくれてたんだと思う)<br/>2社ぼくが面接拒否(最終まで行ってた企業も出てきていい加減面倒臭くなってきた)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-8096-ac4e-f8204f96edb8" class="bulleted-list"><li style="list-style-type:disc">面接は2社ダメで2社内定まで行った<div style="display:contents" dir="auto"><ul id="38495d55-1339-80c4-9062-d283b145febe" class="bulleted-list"><li style="list-style-type:circle">ダメだったとこの内訳<div style="display:contents" dir="auto"><ul id="38495d55-1339-805d-a748-ff0c15539aaa" class="bulleted-list"><li style="list-style-type:square">書類+面接のとこが1社<br/>フィードバックもないから原因はわからん</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-8022-b874-e19b39a60c2b" class="bulleted-list"><li style="list-style-type:square">面接+ライブコーディングのとこが1社<br/>おれは人に見られながらコーディングをするために社会に出たいわけではない</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-80df-aacf-e8b982eeee09" class="bulleted-list"><li style="list-style-type:circle">内定もらったとこの内訳<div style="display:contents" dir="auto"><ul id="38495d55-1339-80d7-b5e3-fce2b864e952" class="bulleted-list"><li style="list-style-type:square">予備で受けてたとこ<div style="display:contents" dir="auto"><ul id="38495d55-1339-80e5-bd7c-c0fd0fa789f2" class="bulleted-list"><li style="list-style-type:disc">自分の研究でやってること自体大変マイナーということもあり、めちゃくちゃ気に入られていた</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-8016-b8e7-e6d09008fd5a" class="bulleted-list"><li style="list-style-type:disc">もう一個の方が本命で、そっちが落ちてたらこっちでもいいかな〜くらいの企業の雰囲気と歓迎具合であった</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-8043-a6ec-d747492c7c99" class="bulleted-list"><li style="list-style-type:disc">オファー面談3時間前くらいに本命のとこが内定出してくれてることが判明して辞退した、面談自体は出たけどやはりめちゃくちゃ歓迎していたので心は痛んだ</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-803c-849d-e4294dc66e71" class="bulleted-list"><li style="list-style-type:square">本命<div style="display:contents" dir="auto"><ul id="38495d55-1339-8092-963d-c1aa4d833816" class="bulleted-list"><li style="list-style-type:disc">本命の方</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-809a-8da8-cd0c331d7879" class="bulleted-list"><li style="list-style-type:disc">めちゃくちゃ技術重視で、研究内容はアホほど掘り下げられた</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-804a-aa53-d994b91b1baf" class="bulleted-list"><li style="list-style-type:disc">あとめちゃくちゃ技術試問された<br/>みなさんはTCPとUDPの違いって知ってます？<br/>わたしはわからなかったです照</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-8087-b0dd-f416c7d8afa5" class="bulleted-list"><li style="list-style-type:disc">もともと自分が研究とか学問を修めるのが好きだったのでそういう意味でも本命だった</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-80be-a934-d915eccbd95c" class="bulleted-list"><li style="list-style-type:disc">通過率4~5割とかだったからまあどーんといこうやって感じではあった、通ってて普通にうれしい</li></ul></div></li></ul></div></li></ul></div></li></ul></div></div></figure></div><div style="display:contents" dir="auto"><h4 id="38495d55-1339-8048-989f-c56da9673e48" class="">以降反省点や所感など</h4></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-8055-8cdd-fca18f0d18c9" class="bulleted-list"><li style="list-style-type:disc">就活の早期化が騒がれているが、それは本当にそうでM1の4月から動き始めたほうが本当はよかったと思う<div style="display:contents" dir="auto"><ul id="38495d55-1339-80fd-a23c-f3b500e205c5" class="bulleted-list"><li style="list-style-type:circle">インターン実施してるところはそれ経由で早期選考の案内もあるので興味がある場合はどしどし応募してもろて、ちなみにぼくは1社しか行ってないし研究室のコネでタダで東京行ける〜〜〜という終わってるモチベーションで行ってた</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-8097-a726-e94c5b95b9d0" class="bulleted-list"><li style="list-style-type:circle">大学の就職予備校化とはよく言ったものである</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-809d-a51c-d54988ec8d0f" class="bulleted-list"><li style="list-style-type:disc">よく言われる「落ちてもマッチングしなかっただけで、能力不足ではないので気にしないように」というマインドセットは、それができたら苦労しないよね〜〜って感じだけどなんだかんだ言って重要である<div style="display:contents" dir="auto"><ul id="38495d55-1339-80c5-98c4-cad6a46c1f5e" class="bulleted-list"><li style="list-style-type:circle">落ちたらその会社の製品不買運動するくらいの勢いでいこう</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-8012-b515-e404403f50f3" class="bulleted-list"><li style="list-style-type:disc">面接の対策はそこそこちゃんとしよう<div style="display:contents" dir="auto"><ul id="38495d55-1339-801e-b9c4-e5b0b8b43146" class="bulleted-list"><li style="list-style-type:circle">企業研究と聞くとまあたいそうなものを想像しがちだけど、ぼくは次のようなことをやってた<div style="display:contents" dir="auto"><ul id="38495d55-1339-8068-b9a7-e98d8255f973" class="bulleted-list"><li style="list-style-type:square">自分の研究とかと関連してそうな製品やサービスを調べる<div style="display:contents" dir="auto"><ul id="38495d55-1339-80b6-8d8f-d3ab49d9c971" class="bulleted-list"><li style="list-style-type:disc">やっぱり企業の人間的にも、自分らの製品のことを話題に出してくれるのはうれしいらしい</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-80a5-af7a-c1728310681a" class="bulleted-list"><li style="list-style-type:disc">よくある質問として「自分のスキルはどのような事業とか状況に活かせそう？」というのがあるため、それの対策もできたらよい</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-800d-975d-e976278723d5" class="bulleted-list"><li style="list-style-type:square">説明会でしゃべってたことはちゃんとメモしておく<div style="display:contents" dir="auto"><ul id="38495d55-1339-8036-b0fb-f1ca0a289ad8" class="bulleted-list"><li style="list-style-type:disc">思想強めな中小企業とかだと、面接でその思想に共感して〜〜みたいなことを話すだけでも結構受け良かった印象である</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-8043-9a42-f6f8bd8286d4" class="bulleted-list"><li style="list-style-type:circle">カンペを用意する<div style="display:contents" dir="auto"><ul id="38495d55-1339-8097-bb07-e4c50cf44cae" class="bulleted-list"><li style="list-style-type:square">web面接300連続とかなると流石に覚えきれん、下手すると他企業の強みを間違えて行ってしまうというガバガバ浮気みたいなことになってしまう</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-80c1-899c-d25883c8735a" class="bulleted-list"><li style="list-style-type:square">さすがにガン見すると視線でバレる</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-8075-aaca-fc4966de96f7" class="bulleted-list"><li style="list-style-type:disc">面接以外も対策しよう<div style="display:contents" dir="auto"><ul id="38495d55-1339-80c4-ba39-f1daec113423" class="bulleted-list"><li style="list-style-type:circle">SPIみたいな試験<div style="display:contents" dir="auto"><ul id="38495d55-1339-809c-99ba-d8ae7bdc34b8" class="bulleted-list"><li style="list-style-type:square">インターネッツ上の変なノウハウに振り回される前に、適当な参考書を買って完走しよう</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-8072-a0de-d10935573730" class="bulleted-list"><li style="list-style-type:square">あと図形配置する系はほんとによくわからんので、調べながらやったらいいと思う</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-8001-abb9-c34eb295b7f6" class="bulleted-list"><li style="list-style-type:square">SPIは監視されてるからムリ</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-806b-82c6-f4225596c114" class="bulleted-list"><li style="list-style-type:square">なんか他はチャッピーに解かせたりもできるらしいけど流石に怖くないか？</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-80a2-83ad-d6955afc9164" class="bulleted-list"><li style="list-style-type:circle">コーディング試験<div style="display:contents" dir="auto"><ul id="38495d55-1339-80c7-acdf-ee4906013853" class="bulleted-list"><li style="list-style-type:square"><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mtext>頂点</mtext><mi>M</mi><mtext>辺の連結無向グラフがある〜〜</mtext></mrow><annotation encoding="application/x-tex">{N\text{頂点}M\text{辺}の連結無向グラフがある〜〜}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord text"><span class="mord cjk_fallback">頂点</span></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord text"><span class="mord cjk_fallback">辺</span></span><span class="mord cjk_fallback">の連結無向グラフがある〜〜</span></span></span></span></span></span></span>みたいな問題を解かされるのはまずおそらくほとんどないと思う<div style="display:contents" dir="auto"><ul id="38495d55-1339-80c2-ae47-ea94689a1a9b" class="bulleted-list"><li style="list-style-type:disc">fizzbuzzとかこんなゲーム考えてみたよ採点するアルゴリズム組んでみてねみたいなのが多いのでは</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-80ef-8b88-d07faf55d107" class="bulleted-list"><li style="list-style-type:disc">なぜこんなに曖昧なことを言ってるのかというと、問題漏洩をしてはならないためである</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-80b5-9225-e22d72126ea4" class="bulleted-list"><li style="list-style-type:square">バカむずい問題解ける？というよりかは、自分でアルゴリズム組める？というところを見られてることが多いと思う<br/>面接でのネタになればいいかな〜〜って思って競プロやってた経験は活かされたり活かされなかったり</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-80df-a0fe-dd2b116a6847" class="bulleted-list"><li style="list-style-type:disc">あとなんか書いた方がよかったことがあった気もしないこともない<div style="display:contents" dir="auto"><ul id="38495d55-1339-8093-b1bd-e309218c25f2" class="bulleted-list"><li style="list-style-type:circle">頑張ってたらそのうちどういう形であれゴールはするのであきらめないように</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-802d-9a70-f477dcccd11f" class="bulleted-list"><li style="list-style-type:circle">とはいえ途中で妥協したりみたいなところはあるかもしれない、そうなったときにどこまで許容できるのかっていうのはあらかじめ考えておいた方がいい</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-809d-839b-d1b96d3e934e" class="bulleted-list"><li style="list-style-type:circle">どこでもいいから働かせてくれ！は超売り手市場の昨今だと非常に危険なスタンスだと思う</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-8003-87b8-f64659b988ab" class="bulleted-list"><li style="list-style-type:circle">どうせ入った企業に死ぬまで勤めるというのはなかなかないと思うので、まあ第一志望のところじゃなくても経験値貯めるか〜〜くらいの気分でいた方がいい</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-80d3-9af3-ef6967a42489" class="bulleted-list"><li style="list-style-type:circle">ビビってたらなにも始まらないのでとにかく動いてみたらいいと思う<div style="display:contents" dir="auto"><ul id="38495d55-1339-805b-9e02-ca55d0c7da34" class="bulleted-list"><li style="list-style-type:square">マイナビなど意外と役に立つこともある、ぼくはつかってないけど</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-80d1-8cfb-ddf025cc2262" class="bulleted-list"><li style="list-style-type:square">大学のキャリアセンターって使えるん？ぼく面接練習で2回くらい使ってみたけど昔行った心療内科のカウンセリングみたいな雰囲気でとても練習になったとは言えなかった</li></ul></div><div style="display:contents" dir="auto"><ul id="38495d55-1339-8037-a814-d981ea5c6fc5" class="bulleted-list"><li style="list-style-type:square">自分一人でどうにもならない状態になった時点で即座に人の力を借りるべき、思ったより他人は自分の就活を応援してくれる</li></ul></div></li></ul></div></li></ul></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
